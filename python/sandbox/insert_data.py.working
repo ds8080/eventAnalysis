@@ -1,0 +1,46 @@
+import mysql.connector
+import time
+import random
+import string
+
+from mysql.connector import errorcode
+from datetime import date, datetime, timedelta
+
+
+config = {
+  'user': 'denver',
+  'password': 'Admin123',
+  'host': '127.0.0.1',
+  'database': 'trafficData',
+  'raise_on_warnings': True,
+}
+
+
+cnx = mysql.connector.connect(**config)
+cursor = cnx.cursor()
+
+DB_NAME = 'trafficData'
+
+
+add_event = ("INSERT INTO events "
+               "(ts, value, Action) "
+               "VALUES (CURRENT_TIMESTAMP, %(value)s, %(action)s)")
+
+
+for x in range(0,100):
+	event_data = {'value':random.randint(3,4),'action':"BLOCK"}
+	cursor.execute(add_event, event_data)
+	print(event_data)
+	time.sleep(0.1)
+	cnx.commit()
+
+
+
+
+cursor.close()
+cnx.close()
+
+
+
+
+
