@@ -1,0 +1,8 @@
+SELECT
+  min(UNIX_TIMESTAMP(ts)) as time_sec,
+  COUNT(Action) as value,
+  Action as metric
+FROM events
+WHERE $__timeFilter(ts)
+GROUP BY metric, UNIX_TIMESTAMP(ts)
+ORDER BY time_sec ASC

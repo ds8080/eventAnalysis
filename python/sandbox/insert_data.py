@@ -38,7 +38,7 @@ actions = ("BLOCK","ALLOW","TRUST");
 while True:
 	sleep_time=getEPS()
 	for x in range(0,100):
-		value = random.randint(0,0);
+		value = random.randint(0,2);
 		action = actions[value];
 		event_data = {'value':value,'action':action}
 		cursor.execute(add_event, event_data)
