@@ -1,8 +1,9 @@
 import json
-import urllib2
 import time
 import configparser
 import random
+
+import requests
 
 actions = ("BLOCK","ALLOW","TRUST");
 
@@ -20,21 +21,23 @@ data = {
 	"timestamp" : time.time()
 }
 
-req = urllib2.Request('http://localhost:8080')
-req.add_header('Content-Type', 'application/json')
 
-
-
+eventCount=0
 
 while True:
         sleep_time=getEPS()
         for x in range(0,100):
-                value = random.randint(0,2);
+                value = random.randint(0,0);
                 action = actions[value];
                 event_data = {'value':value,'action':action, 'timestamp':time.time()}
 		print event_data
-		response = urllib2.urlopen(req, json.dumps(event_data))
-#		print response
+		eventCount=eventCount+1
+#		print eventCount
+		try :
+			response = requests.post("http://localhost:8080", json=event_data)
+			print response
+		except Exception as ex:
+			print ex
 		time.sleep(sleep_time)
 
 
