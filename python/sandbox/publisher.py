@@ -51,6 +51,15 @@ generateEvents("Non-threaded")
 # Uncomment section below to run threaded.  
 #------------------------------------------------------------
 #thread.start_new_thread(generateEvents, ("thread-1",))
+#thread.start_new_thread(generateEvents, ("thread-2",))
+#thread.start_new_thread(generateEvents, ("thread-3",))
+#thread.start_new_thread(generateEvents, ("thread-4",))
+#thread.start_new_thread(generateEvents, ("thread-5",))
+#thread.start_new_thread(generateEvents, ("thread-6",))
+#thread.start_new_thread(generateEvents, ("thread-7",))
+#thread.start_new_thread(generateEvents, ("thread-8",))
+#thread.start_new_thread(generateEvents, ("thread-9",))
+#thread.start_new_thread(generateEvents, ("thread-10",))
 #while True:
 #	pass
 #------------------------------------------------------------
