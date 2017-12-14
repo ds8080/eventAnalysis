@@ -34,7 +34,7 @@ def insertEventToDB(requestBody):
 		eventData = {'value':value, 'action':action, 'timestamp':timestamp} 
 		cursor.execute(add_event, eventData)
 		cnx.commit()
-		print "inserted data into DB with timestamp"  
+#		print "inserted data into DB with timestamp"  
 		print eventData.get("timestamp")
 	except Exception as inst:
 		print inst
@@ -46,10 +46,11 @@ class StringGeneratorWebService(object):
     @cherrypy.tools.accept(media='text/plain')
 
     def POST(self, length=8):
-	mutex.acquire()
-	requestBody = copy.deepcopy(cherrypy.request.body)
-	mutex.release()
-	cherrypy.engine.publish("eventBus", requestBody)
+#	mutex.acquire()
+#	requestBody = copy.deepcopy(cherrypy.request.body)
+#	mutex.release()
+#	cherrypy.engine.publish("eventBus", requestBody)
+	insertEventToDB(cherrypy.request.body)
 
 if __name__ == '__main__':
 	initDBConnection()	

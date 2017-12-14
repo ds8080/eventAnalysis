@@ -25,20 +25,26 @@ data = {
 eventCount=0
 
 while True:
-        sleep_time=getEPS()
+#        sleep_time=getEPS()
+	start_time = time.time()
         for x in range(0,100):
                 value = random.randint(0,0);
                 action = actions[value];
                 event_data = {'value':value,'action':action, 'timestamp':time.time()}
-		print event_data
+#		print event_data
 		eventCount=eventCount+1
 #		print eventCount
 		try :
 			response = requests.post("http://localhost:8080", json=event_data)
-			print response
+#			print response
 		except Exception as ex:
 			print ex
-		time.sleep(sleep_time)
+#		time.sleep(sleep_time)
 
+
+	eventCount = eventCount + 100
+	elapsed_time = time.time() - start_time
+
+	print "EPS rate : {} ".format(100.0/elapsed_time)
 
 
