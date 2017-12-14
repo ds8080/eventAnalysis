@@ -46,11 +46,9 @@ class StringGeneratorWebService(object):
     @cherrypy.tools.accept(media='text/plain')
 
     def POST(self, length=8):
-#	mutex.acquire()
-#	requestBody = copy.deepcopy(cherrypy.request.body)
-#	mutex.release()
-#	cherrypy.engine.publish("eventBus", requestBody)
+	mutex.acquire()
 	insertEventToDB(cherrypy.request.body)
+	mutex.release()
 
 if __name__ == '__main__':
 	initDBConnection()	
