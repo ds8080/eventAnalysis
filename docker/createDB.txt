@@ -1,0 +1,9 @@
+CREATE DATABASE trafficData;
+CREATE USER 'denver'@'localhost';
+GRANT ALL on trafficData.* to 'denver'@'localhost';
+USE trafficData;
+CREATE TABLE hello 
+	(ts timestamp,
+	 value float,
+	 Action enum('BLOCK','ALLOW','TRUST')
+	);
