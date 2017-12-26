@@ -1,0 +1,3 @@
+CREATE DATABASE trafficData;
+USE trafficData;
+CREATE TABLE hello (ts timestamp, value float);
