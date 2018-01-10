@@ -34,7 +34,7 @@ def generateEvents(threadName):
 			event_data = {'value':value,'action':action, 'timestamp':time.time()}
 	#		print event_data
 			try :
-				response = requests.post("http://localhost:8080", json=event_data)
+				response = requests.post("http://18.217.182.244:8080", json=event_data)
 	#			print response
 			except Exception as ex:
 				print ex

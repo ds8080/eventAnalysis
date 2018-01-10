@@ -2,11 +2,15 @@ FROM ubuntu:16.04
 
 RUN apt-get -y update
 
+RUN ["/bin/bash", "-c", "debconf-set-selections <<< 'mysql-server mysql-server/root_password password password'"]
+RUN ["/bin/bash", "-c", "debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password password'"]
+
 RUN apt-get -y install \
   git \
   wget \
   python-dev \
-  python-virtualenv
+  python-virtualenv \
+  mysql-server
 
 WORKDIR /root
 
@@ -25,12 +29,17 @@ RUN bin/pip install --upgrade pip && \
     bin/pip install requests[security]
 
 COPY ./requirements.txt .
-COPY ./listener.py .
-
 RUN bin/pip install -r requirements.txt
 
+COPY ./listener.py .
+COPY ./initDB.sh .
+COPY ./createDB.txt .
 
-EXPOSE 5000
+EXPOSE 8080
+
+
+RUN /bin/bash ./initDB.sh
+
 
 ENTRYPOINT ["bin/python", "listener.py"]
 

@@ -9,7 +9,6 @@ from threading import Lock
 
 config = {
   'user': 'denver',
-  'password': 'Admin123',
   'host': '127.0.0.1',
   'database': 'trafficData',
   'raise_on_warnings': True,

@@ -1,1 +1,2 @@
+DROP USER 'denver'@'localhost';
 DROP DATABASE trafficData;

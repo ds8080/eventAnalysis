@@ -34,9 +34,9 @@ def insertEventToDB(requestBody):
 		value = int(data.get("value"))
 		timestamp = float(data.get("timestamp"))
 		eventData = {'value':value, 'action':action, 'timestamp':timestamp} 
-		cursor.execute(add_event, eventData)
-		cnx.commit()
-#		print "inserted data into DB with timestamp"  
+#		cursor.execute(add_event, eventData)
+#		cnx.commit()
+		print "inserted data into DB with timestamp"  
 		print eventData.get("timestamp")
 	except Exception as inst:
 		print inst
@@ -65,4 +65,5 @@ if __name__ == '__main__':
             	'tools.response_headers.headers': [('Content-Type', 'text/plain')],
         	}
 	}
+	cherrypy.server.socket_host = '0.0.0.0'
 	cherrypy.quickstart(StringGeneratorWebService(), '/', conf)
