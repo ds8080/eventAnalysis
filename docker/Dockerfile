@@ -37,7 +37,7 @@ COPY ./createDB.txt .
 COPY ./startup.sh .
 
 EXPOSE 8080
-
+EXPOSE 3306
 
 RUN /bin/bash ./initDB.sh
 

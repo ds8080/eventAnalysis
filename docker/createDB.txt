@@ -2,8 +2,10 @@ CREATE DATABASE trafficData;
 CREATE USER 'denver'@'localhost' IDENTIFIED BY 'Admin123';
 GRANT ALL on trafficData.* to 'denver'@'localhost';
 USE trafficData;
-CREATE TABLE hello 
+CREATE TABLE events 
 	(ts timestamp,
 	 value float,
 	 Action enum('BLOCK','ALLOW','TRUST')
 	);
+CREATE USER 'grafanaReader' IDENTIFIED BY 'password';
+GRANT SELECT ON trafficData.events TO 'grafanaReader';

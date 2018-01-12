@@ -15,8 +15,8 @@ config = {
   'raise_on_warnings': True,
 }
 
-#cnx = mysql.connector.connect(**config)
-#cursor = cnx.cursor()
+cnx = mysql.connector.connect(**config)
+cursor = cnx.cursor()
 
 
 add_event = ("INSERT INTO events "
