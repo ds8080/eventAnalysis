@@ -1,5 +1,5 @@
 CREATE DATABASE trafficData;
-CREATE USER 'denver'@'localhost';
+CREATE USER 'denver'@'localhost' IDENTIFIED BY 'Admin123';
 GRANT ALL on trafficData.* to 'denver'@'localhost';
 USE trafficData;
 CREATE TABLE hello 

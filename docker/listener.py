@@ -18,6 +18,7 @@ config = {
 #cnx = mysql.connector.connect(**config)
 #cursor = cnx.cursor()
 
+
 add_event = ("INSERT INTO events "
                "(ts, value, Action) "
                "VALUES (FROM_UNIXTIME(%(timestamp)s), %(value)s, %(action)s)")
@@ -34,8 +35,8 @@ def insertEventToDB(requestBody):
 		value = int(data.get("value"))
 		timestamp = float(data.get("timestamp"))
 		eventData = {'value':value, 'action':action, 'timestamp':timestamp} 
-#		cursor.execute(add_event, eventData)
-#		cnx.commit()
+		cursor.execute(add_event, eventData)
+		cnx.commit()
 		print "inserted data into DB with timestamp"  
 		print eventData.get("timestamp")
 	except Exception as inst:

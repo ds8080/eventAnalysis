@@ -1,3 +1,4 @@
+service mysql restart
 echo "beginning creation ..."
-mysql -u root -p password sys < createDB.txt
+mysql -uroot -ppassword < createDB.txt
 echo "creation complete"

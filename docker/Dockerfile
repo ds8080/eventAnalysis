@@ -34,6 +34,7 @@ RUN bin/pip install -r requirements.txt
 COPY ./listener.py .
 COPY ./initDB.sh .
 COPY ./createDB.txt .
+COPY ./startup.sh .
 
 EXPOSE 8080
 
@@ -41,7 +42,8 @@ EXPOSE 8080
 RUN /bin/bash ./initDB.sh
 
 
-ENTRYPOINT ["bin/python", "listener.py"]
+#ENTRYPOINT ["bin/python", "listener.py"]
 
-
+ENTRYPOINT ["/bin/bash", "startup.sh"]
+#ENTRYPOINT  ["./startup.sh"]
 
